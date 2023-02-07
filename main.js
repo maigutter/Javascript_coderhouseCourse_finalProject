@@ -1,7 +1,8 @@
+let estudiante = prompt("Ingrese su nombre :) ")
 let docenteDelEstudiante = prompt("Ingrese el nombre de su docente")
 
 if(docenteDelEstudiante === "Sabri" || docenteDelEstudiante ==="Mai" || docenteDelEstudiante === "Sabrina" || docenteDelEstudiante ==="Maia" || docenteDelEstudiante ==="maia" || docenteDelEstudiante ==="mai" || docenteDelEstudiante ==="sabri"|| docenteDelEstudiante ==="sabrina" ){
-alert("Bienvenide, estudiante de " + docenteDelEstudiante)
+alert("Bienvenide " + estudiante +", estudiante de " + docenteDelEstudiante)
 alert("Vas a tener 3 intentos para resolver cada ejercicio. Por favor respondé todo en MAYÚSCULAS (porque de momento nuestro sistema es case sensitive)")
 ejercicio("¿Cuál es el SIMPLE PAST del verbo TO BE para el sujeto SHE", "WAS")
 ejercicio("¿Cuál es el PRESENT SIMPLE del verbo TO BE para el sujeto I?", "AM")
