@@ -1,0 +1,256 @@
+* {
+    font-family: 'Alata';
+    padding: 0px;
+    margin: 0px; }
+
+body {
+    background-image: radial-gradient(116.88% 101.21% at 10.35% 20.88%, #8596DC 0%, #C5A9E9 82.73%, #DEB0EE 100%);
+    background-color: #cccccc;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #202b58;
+    min-height: 100vh;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column; }
+
+
+header {
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+    min-height: 450px;
+    height: auto;
+    object-fit: contain;
+    margin: 0%;
+    margin-bottom: 1%;
+    padding: 0%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap; }
+
+.header__pagetitle {
+    text-align: center;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    text-shadow: 3px 3px 4px #EAEEFB; }
+    .header__pagetitle h1 {
+        width: 100%;
+        margin: 3% 0%; }
+
+.header__logo {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    max-width: 100%;
+    width: 100%;
+    min-height: 450px;
+    height: 450px;
+    object-fit: contain;
+    filter: drop-shadow(0px 8px 4px rgba(0, 0, 0, 0.25)) drop-shadow(-8px -1px 4px rgba(0, 0, 0, 0.3)); }
+
+.pagetitle {
+    margin: 10px 0px 25px 0px;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    text-shadow: 3px 3px 4px #EAEEFB; }
+
+@media screen and (max-width: 600px) {
+    .header__pagetitle {
+    width: 100%;
+    align-self: center;
+    margin: 0; }
+    .header__pagetitle h1 {
+        white-space: nowrap;
+        font-size: 4vh; } }
+
+@media screen and (min-width: 600px) {
+    .header__pagetitle {
+        width: 100%;
+        margin: 1%;
+        width: 50%; }
+    .header__pagetitle h1 {
+        width: 100%;
+        white-space: nowrap; }
+    .header__logo {
+        min-width: 336px; } }
+
+    .iconos {
+    margin: 0;
+    height: 45px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    list-style: none;
+    box-align: center;
+    text-align: center;
+    z-index: 2; }
+    .iconos a:hover {
+        outline-color: rgba(255, 255, 255, 0);
+        outline-offset: 15px;
+        text-shadow: 1px 1px 2px #427388;
+        height: 49px; }
+
+.iconos__imagen {
+    margin: 0;
+    height: 45px;
+    width: auto;
+    filter: drop-shadow(4px 5px 4px rgba(37, 47, 90, 0.25)); }
+
+.iconos__li {
+    display: flex;
+    width: auto;
+    height: auto;
+    margin: 9px; }
+
+@keyframes enterfromleft {
+from {
+    transform: translateX(-100%); }
+to {
+    transform: translateX(0%); } }
+
+@keyframes enterfromright {
+from {
+    transform: translateX(100%); }
+to {
+    transform: translateX(0%); } }
+
+@keyframes centro {
+0% {
+    opacity: .4; }
+100% {
+    opacity: 1; } }
+
+.textoalcentro {
+    background-color: rgba(204, 208, 237, 0.7);
+    box-shadow: 6px 6px 4px rgba(37, 47, 90, 0.25);
+    border-radius: 20px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-delay: 0;
+    animation-name: centro;
+    animation-duration: 1s; }
+
+.textoalaizquierda {
+    background-color: rgba(204, 208, 237, 0.7);
+    box-shadow: 6px 6px 4px rgba(37, 47, 90, 0.25);
+    border-radius: 20px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-delay: 0;
+    animation-name: enterfromleft;
+    animation-duration: 3s; }
+
+.textoaladerecha {
+    background-color: rgba(204, 208, 237, 0.7);
+    box-shadow: 6px 6px 4px rgba(37, 47, 90, 0.25);
+    border-radius: 20px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-delay: 0;
+    animation-name: enterfromright;
+    animation-duration: 4s; }
+
+.textoalcentrocondelay {
+    background-color: rgba(204, 208, 237, 0.7);
+    box-shadow: 6px 6px 4px rgba(37, 47, 90, 0.25);
+    border-radius: 20px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-delay: 0;
+    animation-name: centro;
+    animation-duration: 8s; }
+
+@media screen and (max-width: 600px) {
+p {
+    background-color: rgba(204, 208, 237, 0.7);
+    background-blend-mode: lighten;
+    border-radius: 20px;
+    text-align: center;
+    height: auto;
+    margin: 4% 0%;
+    padding: 2%;
+    line-height: 1.8;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    word-spacing: 3px;
+    font-size: 2.8vh; }
+.home__p {
+    background-color: rgba(204, 208, 237, 0.7);
+    background-blend-mode: lighten;
+    border-radius: 20px;
+    text-align: justify;
+    height: auto;
+    padding: 2%;
+    line-height: 1.8;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    word-spacing: 3px;
+    text-indent: 10%; }
+.video {
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    max-width: 100vw; }
+.cajatexto {
+    padding: 0 2vw; } }
+
+@media screen and (min-width: 600px) {
+p {
+    background-color: rgba(204, 208, 237, 0.7);
+    background-blend-mode: lighten;
+    border-radius: 20px;
+    text-align: justify;
+    margin: 10px 10% 25px 10%;
+    width: 75%;
+    height: auto;
+    padding: 2%;
+    line-height: 1.8;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    word-spacing: 3px;
+    font-size: 2.6vh; }
+.home__p {
+    background-color: rgba(204, 208, 237, 0.7);
+    background-blend-mode: lighten;
+    border-radius: 20px;
+    text-align: justify;
+    margin: 10px 10% 25px 10%;
+    width: 75%;
+    height: auto;
+    padding: 2%;
+    line-height: 1.8;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    word-spacing: 3px;
+    text-indent: 10%; }}
