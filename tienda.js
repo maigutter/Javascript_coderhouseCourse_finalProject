@@ -51,10 +51,10 @@ function modificacionCurso() {
     let indice = arrayCursosVenta.indexOf(cursoVenta);
 
     let nombre = prompt("Ingrese el nombre del curso: ");
-    let precio = parseInt(prompt("Ingrese el precio del cliente:  "));
+    let precio = parseInt(prompt("Ingrese el precio del curso:  "));
     let img = "./assets/logo4.jpeg";
     let descripcion = prompt("Ingrese la descripción del curso: ");
-    let cursoModificado = new Cliente(nombre, precio, img, descripcion);
+    let cursoModificado = new CursoVenta(nombre, precio, img, descripcion);
 
     arrayCursosVenta.splice(indice, 1, cursoModificado);
     console.log(arrayCursosVenta);
