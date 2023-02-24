@@ -23,7 +23,7 @@ formRegistroEstudiante.addEventListener("submit", (e) => {
     console.log(`y el apellido ingresado es ${apellido.value}`);
     console.log(`el email ingresado es ${email.value}`);
     console.log(`la contraseña ingresada es ${contrasena.value}`);
-    console.log("Formulario enviado")
+    alert("Formulario enviado")
 
     const estudiante = new Estudiante (nombre.value, apellido.value, email.value, contrasena.value);
     arrayEstudiantes.push(estudiante);
@@ -31,6 +31,7 @@ formRegistroEstudiante.addEventListener("submit", (e) => {
 
     formRegistroEstudiante.reset();
 })
+
 
 
 

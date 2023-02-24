@@ -102,4 +102,11 @@ arrayCursosVenta.forEach( cursoVenta => {
     contenedorTienda.appendChild(div);
 })
 
+const arrayCarrito = [];
 
+let agregarCarrito = document.getElementById("agregarCarrito");
+agregarCarrito.addEventListener("click", ()=>{
+    let cursoVenta = 
+    arrayCarrito.push(cursoVenta);
+    console.log(arrayCarrito);
+})
