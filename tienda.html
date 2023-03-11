@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mai Language Lab - Tienda de cursos online</title>
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- MI CSS -->
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="./assets/favicon3/favicon.ico" sizes = any >
     <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
@@ -33,7 +36,12 @@
                         <img src= "./assets/email icono.png"class="iconos__imagen" alt="icono mail by icons8, sobre de carta abierto con un papel dentro con una @ en colores pasteles estilo dibujo"></a></li> </ul></div></header>
 
     <h2 class="pagetitle">Bienvenides a la tienda de Mai Language Lab </h2>
-    <div> </div>    
+    <div  class="container col-sm-8 textoalcentro"> 
+        <h3>Opciones de admins</h3>
+        <button class="btn button" id="agregarCurso">Agregar curso a la tienda </button>
+        <button class="btn button" id="eliminarCurso">Eliminar un curso de la tienda</button>
+        <button class="btn button" id="editarCurso">Editar un curso de la tienda</button></div>
+    <div class="cajatexto" id="cajaForm"></div>    
     <div class="cajatexto"><p class="container col-sm-8 textoalcentro"> Acá podés comprar nuestros cursos online. </p></div>
 
     <div id="contenedorTienda"></div>
@@ -65,7 +73,8 @@
                     <img src= "./assets/email icono.png"class="iconos__imagen" alt="icono mail by icons8"></a></li></ul>
     </footer>
 
-    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="main.js"></script> -->
     <script src="tienda.js"></script>
 </body>
 </html>
