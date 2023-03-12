@@ -56,6 +56,7 @@ agregarCurso.addEventListener("click", () => {
                             let cursoVenta = new CursoVenta(nombre, precio, img, descripcion, id);
                             arrayCursosVenta.push(cursoVenta);
                             console.log(arrayCursosVenta);
+                            contenedorTienda.innerHTML= ``;
                             editarTienda();
                         });
                         const cerrarForm = document.getElementById("cerrarForm");
@@ -104,6 +105,7 @@ eliminarCurso.addEventListener("click", () => {
                             let indice = arrayCursosVenta.indexOf(cursoVenta);
                             arrayCursosVenta.splice(indice, 1);
                             console.log(arrayCursosVenta);
+                            contenedorTienda.innerHTML= ``;
                             editarTienda();
                         });
                         const cerrarForm = document.getElementById("cerrarForm");
@@ -119,6 +121,60 @@ eliminarCurso.addEventListener("click", () => {
                             }};
             })
             })
+
+
+editarCurso.addEventListener("click", () => {
+    Swal.fire({
+        title: "Ingresa tu usuario de admin",
+        html: `
+            <input type="text" id="usuarioIngresadoAdmin" class="swal2-input" placeholder="ingresa tu usuario">
+            <input type="text" id="passwordIngresadaAdmin" class="swal2-input" placeholder="ingresa tu contraseña">`,
+        confirmButtonText: "Enviar",
+        showCancelButton: true, 
+        cancelButonText: "Cancelar",}).then(
+            (result)=>{
+                if(result.isConfirmed){ 
+                    const usuarioIngresadoAdmin = document.getElementById("usuarioIngresadoAdmin").value;
+                    const passwordIngresadaAdmin = document.getElementById("passwordIngresadaAdmin").value;
+                    if (usuarioIngresadoAdmin === usuarioAdmin && passwordIngresadaAdmin === passwordAdmin){
+                        cajaForm.innerHTML=`
+                        <section class="form">
+                            <div class="form__section"><input type="text" id="idCurso" class="swal2-input" placeholder="ingresa el ID del curso"></div>
+                            <div class="form__section"><input type="text" id="nombreCurso" class="swal2-input" placeholder="ingresa el nombre del curso"></div>
+                            <div class="form__section"><input type="number" id="precioCurso" class="swal2-input" placeholder="ingresa el precio del curso"></div>
+                            <div class="form__section"><input type="text" id="descripcionCurso" class="swal2-input" placeholder="ingresa la descripción del curso"></div>
+                            <div class="buttonsection">
+                                <div class="buttonsection" id="enviarFormEditarCurso"><input type="submit" value="Enviar" class="form__button" id="submit"></div>
+                                <div class="buttonsection" id="cerrarForm"><input type="submit" value="Cerrar" class="form__button" id="submit"></div> </div> </section> `;
+                        const enviarFormEditarCurso = document.getElementById("enviarFormEditarCurso");
+                        enviarFormEditarCurso.addEventListener("click", () => {
+                            let idBuscado = document.getElementById("idCurso").value;;
+                            let cursoVenta = arrayCursosVenta.find(cursoVenta => cursoVenta.id === idBuscado);
+                            let indice = arrayCursosVenta.indexOf(cursoVenta);
+                            let nombre = document.getElementById("nombreCurso").value;
+                            let precio = parseInt(document.getElementById("precioCurso").value);
+                            let img = "./assets/logo4.jpeg";
+                            let descripcion = document.getElementById("descripcionCurso").value;
+                            let cursoModificado = new CursoVenta(nombre, precio, img, descripcion, idBuscado);
+                            arrayCursosVenta.splice(indice, 1, cursoModificado);
+                            console.log(arrayCursosVenta);
+                            contenedorTienda.innerHTML= ``;
+                            editarTienda();
+                        });
+                        const cerrarForm = document.getElementById("cerrarForm");
+                        cerrarForm.addEventListener("click", () => {
+                            cajaForm.innerHTML= ``;
+                        });
+                            }else {
+                                Swal.fire({
+                                    title: "Error en los datos de admin",
+                                    icon: "error",
+                                    confirmButtonText: "ok",
+                                })
+                            }};
+            })
+            })
+
 
 
 /*function menu() {
