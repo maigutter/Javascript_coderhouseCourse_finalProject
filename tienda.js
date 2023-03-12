@@ -176,62 +176,6 @@ editarCurso.addEventListener("click", () => {
             })
 
 
-
-/*function menu() {
-    alert("Bienvenide a la Tienda Virtual!");
-    let opcion = parseInt(prompt("Elegí lo que querés hacer: 1)Acceder a la tienda! Quiero comprar. 2) Opción de admin: Agregar un curso a la tienda 3) Opción de admin: Sacar un curso de la tienda 4) Opción de Admin - Modificar un Curso 5) Salir"));
-    return opcion;
-}
-
-
-function bienvenida() {
-    alert("Bienvenide a la Tienda!");
-}*/
-
-
-
-
-function modificacionCurso() {
-    let idBuscado = prompt("Ingrese el ID  del curso:  ");
-    let cursoVenta = arrayCursosVenta.find(cursoVenta => cursoVenta.id === idBuscado);
-    let indice = arrayCursosVenta.indexOf(cursoVenta);
-
-    let nombre = prompt("Ingrese el nombre del curso: ");
-    let precio = parseInt(prompt("Ingrese el precio del curso:  "));
-    let img = "./assets/logo4.jpeg";
-    let descripcion = prompt("Ingrese la descripción del curso: ");
-    let id = prompt ("Ingrese el nuevo ID del curso: ")
-    let cursoModificado = new CursoVenta(nombre, precio, img, descripcion, id);
-
-    arrayCursosVenta.splice(indice, 1, cursoModificado);
-    console.log(arrayCursosVenta);
-}
-
-
-
-//let opcion = menu();
-
-/*switch(opcion) {
-    case 1: 
-        bienvenida();
-        break;
-    case 2:
-        agregarCurso();
-        break;
-    case 3: 
-        quitarCurso();
-        break;
-    case 4: 
-        modificacionCurso();
-        break;
-    case 5: 
-        salir();
-        break;
-    default:
-        alert("Lo sentimos! Esta no es una opción! Recargá la página y volvé a intentar :)");
-        break;
-}*/
-
 const contenedorTienda = document.getElementById("contenedorTienda");
 
 function editarTienda (){
