@@ -26,6 +26,7 @@ const agregarEjercicio = document.getElementById("agregarEjercicio");
 const eliminarEjercicio = document.getElementById("eliminarEjercicio");
 const editarEjercicio = document.getElementById("editarEjercicio");
 const cajaEjercicios = document.getElementById("cajaEjercicios");
+const cajaFormEjercicios = document.getElementById("cajaFormEjercicios");
 
 class Ejercicios {
     constructor(idEjercicio, task, respuestaCorrecta) {
@@ -35,11 +36,11 @@ class Ejercicios {
     }
 }
 
-/*const ejercicioUno = new Ejercicios ("ejercicioUno", "¿Cuál es el SIMPLE PAST del verbo TO BE para el sujeto SHE?", "WAS");
+const ejercicioUno = new Ejercicios ("ejercicioUno", "¿Cuál es el SIMPLE PAST del verbo TO BE para el sujeto SHE?", "WAS");
 const ejercicioDos = new Ejercicios ("ejercicioDos", "¿Cuál es el PARTICIPLE del verbo TO DO?", "DONE");
-const ejercicioTres = new Ejercicios ("ejercicioTres", "¿Cuál es el SIMPLE PRESENT del verbo TO BE para el sujeto I?", "AM");*/
+const ejercicioTres = new Ejercicios ("ejercicioTres", "¿Cuál es el SIMPLE PRESENT del verbo TO BE para el sujeto I?", "AM");
 
-const arrayEjercicios = [];
+const arrayEjercicios = [ejercicioUno, ejercicioDos, ejercicioTres];
 
 const agregarCurso = document.getElementById("agregarCurso");
 const eliminarCurso = document.getElementById("eliminarCurso");
@@ -61,7 +62,7 @@ agregarEjercicio.addEventListener("click", () => {
                     const usuarioIngresadoAdmin = document.getElementById("usuarioIngresadoAdmin").value;
                     const passwordIngresadaAdmin = document.getElementById("passwordIngresadaAdmin").value;
                     if (usuarioIngresadoAdmin === usuarioAdmin && passwordIngresadaAdmin === passwordAdmin){
-                        cajaEjercicios.innerHTML=`
+                        cajaFormEjercicios.innerHTML=`
                         <section class="form">
                             <div class="form__section"><input type="text" id="idEjercicio" class="swal2-input" placeholder="ingresa el ID del Ejercicio"></div>
                             <div class="form__section"><input type="text" id="task" class="swal2-input" placeholder="ingresa el task del ejercicios"></div>
@@ -77,11 +78,13 @@ agregarEjercicio.addEventListener("click", () => {
                             let nuevoEjercicio = new Ejercicios(idEjercicio, task, respuestaCorrecta);
                             arrayEjercicios.push(nuevoEjercicio);
                             console.log(arrayEjercicios);
+                            cajaEjercicios.innerHTML = ``;
+                            ejerciciosHtml();
                         });
                         };
                         const cerrarForm = document.getElementById("cerrarForm");
                         cerrarForm.addEventListener("click", () => {
-                            cajaEjercicios.innerHTML= ``;
+                            cajaFormEjercicios.innerHTML= ``;
                         });
                             }else {
                                 Swal.fire({
@@ -98,7 +101,7 @@ function ejerciciosHtml (){
         const div = document.createElement("div");
         div.className = "curso";
         div.innerHTML = `<p class = "task"> ${ejercicio.task} </p>
-                        <div class="form__section"><input type="number" id="respuestaIngresada" class="swal2-input" placeholder="ingresa la respuesta del ejercicio"></div>
+                        <div class="form__section"><input type="text" id="respuestaIngresada" class="swal2-input" placeholder="ingresa la respuesta del ejercicio"></div>
                         <div class="buttonsection" id="enviarEjercicio"><input type="submit" value="Enviar" class="form__button" id="submit"></div>`;
                     cajaEjercicios.appendChild(div);
                     const enviarEjercicio =document.getElementById("enviarEjercicio");

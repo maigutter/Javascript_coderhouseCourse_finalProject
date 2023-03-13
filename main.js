@@ -8,7 +8,12 @@ class Estudiante {
     }
 }
 
-const arrayEstudiantes = [];
+let arrayEstudiantes = [];
+const arrayEstudiantesJSON = localStorage.getItem("arrayEstudiantes");
+arrayEstudiantesParse = JSON.parse(arrayEstudiantesJSON);
+
+arrayEstudiantes = arrayEstudiantesParse;
+
 
 const formRegistroEstudiante = document.getElementById("formRegistroEstudiante");
 
@@ -69,13 +74,17 @@ botonInicioSesion.addEventListener("click", () => {
                             confirmButton: "Ok",})
                     }}
 
+            arrayEstudiantes.forEach(estudiante => {
+                
+                
+            });
+
         }
     } )
 })
 
 
-const arrayEstudiantesJSON = localStorage.getItem("arrayEstudiantes");
-arrayEstudiantesParse = JSON.parse(arrayEstudiantesJSON);
+
 
 
 
