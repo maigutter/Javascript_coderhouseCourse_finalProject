@@ -49,7 +49,7 @@ botonInicioSesion.addEventListener("click", () => {
         <input type="text" id="passwordIngresada" class="swal2-input" placeholder="ingresa tu contraseña">`,
         confirmButtonText: "Enviar",
         showCancelButton: true, 
-        cancelButonText: "Cancelar",
+        cancelButtonText: "Cancelar",
     }).then((result) =>{
         if(result.isConfirmed)
         {
@@ -75,8 +75,8 @@ botonInicioSesion.addEventListener("click", () => {
 
 
 const arrayEstudiantesJSON = localStorage.getItem("arrayEstudiantes");
-const arrayEstudiantesParse = JSON.parse(arrayEstudiantesJSON);
-arrayEstudiantes = arrayEstudiantesJSON;
+arrayEstudiantesParse = JSON.parse(arrayEstudiantesJSON);
+
 
 
 

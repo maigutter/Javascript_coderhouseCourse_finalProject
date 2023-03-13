@@ -61,7 +61,7 @@ agregarEjercicio.addEventListener("click", () => {
                     const usuarioIngresadoAdmin = document.getElementById("usuarioIngresadoAdmin").value;
                     const passwordIngresadaAdmin = document.getElementById("passwordIngresadaAdmin").value;
                     if (usuarioIngresadoAdmin === usuarioAdmin && passwordIngresadaAdmin === passwordAdmin){
-                        cajaForm.innerHTML=`
+                        cajaEjercicios.innerHTML=`
                         <section class="form">
                             <div class="form__section"><input type="text" id="idEjercicio" class="swal2-input" placeholder="ingresa el ID del Ejercicio"></div>
                             <div class="form__section"><input type="text" id="task" class="swal2-input" placeholder="ingresa el task del ejercicios"></div>
@@ -81,7 +81,7 @@ agregarEjercicio.addEventListener("click", () => {
                         };
                         const cerrarForm = document.getElementById("cerrarForm");
                         cerrarForm.addEventListener("click", () => {
-                            cajaForm.innerHTML= ``;
+                            cajaEjercicios.innerHTML= ``;
                         });
                             }else {
                                 Swal.fire({
