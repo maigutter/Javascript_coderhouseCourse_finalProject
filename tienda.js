@@ -31,7 +31,7 @@ agregarCurso.addEventListener("click", () => {
             <input type="text" id="passwordIngresadaAdmin" class="swal2-input" placeholder="ingresa tu contraseña">`,
         confirmButtonText: "Enviar",
         showCancelButton: true, 
-        cancelButonText: "Cancelar",}).then(
+        cancelButtonText: "Cancelar",}).then(
             (result)=>{
                 if(result.isConfirmed){ 
                     const usuarioIngresadoAdmin = document.getElementById("usuarioIngresadoAdmin").value;
@@ -86,7 +86,7 @@ eliminarCurso.addEventListener("click", () => {
             <input type="text" id="passwordIngresadaAdmin" class="swal2-input" placeholder="ingresa tu contraseña">`,
         confirmButtonText: "Enviar",
         showCancelButton: true, 
-        cancelButonText: "Cancelar",}).then(
+        cancelButtonText: "Cancelar",}).then(
             (result)=>{
                 if(result.isConfirmed){ 
                     const usuarioIngresadoAdmin = document.getElementById("usuarioIngresadoAdmin").value;
@@ -131,7 +131,7 @@ editarCurso.addEventListener("click", () => {
             <input type="text" id="passwordIngresadaAdmin" class="swal2-input" placeholder="ingresa tu contraseña">`,
         confirmButtonText: "Enviar",
         showCancelButton: true, 
-        cancelButonText: "Cancelar",}).then(
+        cancelButtonText: "Cancelar",}).then(
             (result)=>{
                 if(result.isConfirmed){ 
                     const usuarioIngresadoAdmin = document.getElementById("usuarioIngresadoAdmin").value;

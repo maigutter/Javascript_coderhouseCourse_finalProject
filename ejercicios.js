@@ -55,7 +55,7 @@ agregarEjercicio.addEventListener("click", () => {
             <input type="text" id="passwordIngresadaAdmin" class="swal2-input" placeholder="ingresa tu contraseña">`,
         confirmButtonText: "Enviar",
         showCancelButton: true, 
-        cancelButonText: "Cancelar",}).then(
+        cancelButtonText: "Cancelar",}).then(
             (result)=>{
                 if(result.isConfirmed){ 
                     const usuarioIngresadoAdmin = document.getElementById("usuarioIngresadoAdmin").value;
@@ -65,7 +65,7 @@ agregarEjercicio.addEventListener("click", () => {
                         <section class="form">
                             <div class="form__section"><input type="text" id="idEjercicio" class="swal2-input" placeholder="ingresa el ID del Ejercicio"></div>
                             <div class="form__section"><input type="text" id="task" class="swal2-input" placeholder="ingresa el task del ejercicios"></div>
-                            <div class="form__section"><input type="number" id="respuestaCorrecta" class="swal2-input" placeholder="ingresa la respuesta del ejercicio"></div>
+                            <div class="form__section"><input type="text" id="respuestaCorrecta" class="swal2-input" placeholder="ingresa la respuesta del ejercicio"></div>
                             <div class="buttonsection">
                                 <div class="buttonsection" id="enviarFormAgregarEjercicio"><input type="submit" value="Enviar" class="form__button" id="submit"></div>
                                 <div class="buttonsection" id="cerrarForm"><input type="submit" value="Cerrar" class="form__button" id="submit"></div> </div> </section> `;
