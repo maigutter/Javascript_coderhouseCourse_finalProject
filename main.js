@@ -38,6 +38,7 @@ formRegistroEstudiante.addEventListener("submit", (e) => {
 })
 
 
+
 //Boton ingreso sesión
 const botonInicioSesion = document.getElementById("botonInicioSesion");
 botonInicioSesion.addEventListener("click", () => {
@@ -55,17 +56,19 @@ botonInicioSesion.addEventListener("click", () => {
             const usuarioIngresado = document.getElementById("usuarioIngresado").value;
             const passwordIngresada = document.getElementById("passwordIngresada").value;
 
-            // función para chequear que el usuario ingresado y la contraseña ingresada coincidan con algún objeto en el array que fue retriveado desde el local storage... si es correcto, redireccionar a ejercicios
-            if (usuarioIngresado === estudiante.email && passwordIngresada === estudiante.password && (docenteIngresade.toUpperCase()==="MAI" || docenteIngresade.toUpperCase()==="SABRI" || docenteIngresade.toUpperCase()==="LALO" || docenteIngresade.toUpperCase()==="MAIA" || docenteIngresade.toUpperCase()==="SABRINA")){
-                sessionStorage.setItem("nombreEstudiante", nombreIngresado);
-                sessionStorage.setItem("docenteIngresade", docenteIngresade);
-                window.location.href ="ejercicios.html"} 
-                else {
-                    Swal.fire({
-                        title: "Inicio de sesión fallido",
-                        text: "Lo sentimos, tus datos no son correctos. Recargá la página y volvelo a intentar.",
-                        icon: "error",
-                        confirmButton: "Ok",})}
+
+            for (let i=0; i < arrayEstudiantes.lenght; i++) {
+                if (arrayEstudiantes[i].email === usuarioIngresado && arrayEstudiantes[i].contrasena === passwordIngresada){
+                    sessionStorage.setItem("nombreEstudiante", nombreIngresado);
+                    sessionStorage.setItem("docenteIngresade", docenteIngresade);
+                    window.location.href ="ejercicios.html"} else {
+                        Swal.fire({
+                            title: "Inicio de sesión fallido",
+                            text: "Lo sentimos, tus datos no son correctos. Recargá la página y volvelo a intentar.",
+                            icon: "error",
+                            confirmButton: "Ok",})
+                    }}
+
         }
     } )
 })
@@ -73,6 +76,7 @@ botonInicioSesion.addEventListener("click", () => {
 
 const arrayEstudiantesJSON = localStorage.getItem("arrayEstudiantes");
 const arrayEstudiantesParse = JSON.parse(arrayEstudiantesJSON);
+arrayEstudiantes = arrayEstudiantesJSON;
 
 
 

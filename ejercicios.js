@@ -35,11 +35,11 @@ class Ejercicios {
     }
 }
 
-const ejercicioUno = new Ejercicios ("ejercicioUno", "¿Cuál es el SIMPLE PAST del verbo TO BE para el sujeto SHE?", "WAS");
+/*const ejercicioUno = new Ejercicios ("ejercicioUno", "¿Cuál es el SIMPLE PAST del verbo TO BE para el sujeto SHE?", "WAS");
 const ejercicioDos = new Ejercicios ("ejercicioDos", "¿Cuál es el PARTICIPLE del verbo TO DO?", "DONE");
-const ejercicioTres = new Ejercicios ("ejercicioTres", "¿Cuál es el SIMPLE PRESENT del verbo TO BE para el sujeto I?", "AM");
+const ejercicioTres = new Ejercicios ("ejercicioTres", "¿Cuál es el SIMPLE PRESENT del verbo TO BE para el sujeto I?", "AM");*/
 
-const arrayEjercicios = [ejercicioUno, ejercicioDos, ejercicioTres];
+const arrayEjercicios = [];
 
 const agregarCurso = document.getElementById("agregarCurso");
 const eliminarCurso = document.getElementById("eliminarCurso");
