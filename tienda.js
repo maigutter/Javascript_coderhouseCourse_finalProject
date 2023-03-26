@@ -1,3 +1,4 @@
+// Constructor Cursos en Venta
 class CursoVenta {
     constructor(nombre, precio, img, descripcion, id) {
         this.nombre = nombre;
@@ -8,23 +9,29 @@ class CursoVenta {
     }
 }
 
+//Creo tres cursos en venta por Default
+
 const cursoUno = new CursoVenta("Inglés Inicial", 5000, "./assets/logo4.jpeg", "Este es un curso inicial", "curso1");
 const cursoDos = new CursoVenta("Inglés Intermedio", 5000, "./assets/logo4.jpeg", "Este es un curso intermedio", "curso2");
 const cursoTres = new CursoVenta("Inglés Avanzado", 5000, "./assets/logo4.jpeg", "Este es un curso avanzado", "curso3");
 
+// Creo el array Cursos Venta con los tres cursos default
 const arrayCursosVenta = [cursoUno, cursoDos, cursoTres];
 
+//Linkeo 3 botones
 const agregarCurso = document.getElementById("agregarCurso");
 const eliminarCurso = document.getElementById("eliminarCurso");
 const editarCurso = document.getElementById("editarCurso");
 
+//Información de admin 
 const usuarioAdmin = "Admin4";
 const passwordAdmin = "admin";
 
 
-
+//Función agregar Curso nuevo
 agregarCurso.addEventListener("click", () => {
     Swal.fire({
+        //Pido user y contraseña de admin
         title: "Ingresa tu usuario de admin",
         html: `
             <input type="text" id="usuarioIngresadoAdmin" class="swal2-input" placeholder="ingresa tu usuario">
@@ -36,6 +43,7 @@ agregarCurso.addEventListener("click", () => {
                 if(result.isConfirmed){ 
                     const usuarioIngresadoAdmin = document.getElementById("usuarioIngresadoAdmin").value;
                     const passwordIngresadaAdmin = document.getElementById("passwordIngresadaAdmin").value;
+                    //Chequeo si coincide con la información de admin
                     if (usuarioIngresadoAdmin === usuarioAdmin && passwordIngresadaAdmin === passwordAdmin){
                         cajaForm.innerHTML=`
                         <section class="form">
@@ -59,11 +67,13 @@ agregarCurso.addEventListener("click", () => {
                             contenedorTienda.innerHTML= ``;
                             editarTienda();
                         });
+                        //Genero un botón para cerrar el form de agregar curso 
                         const cerrarForm = document.getElementById("cerrarForm");
                         cerrarForm.addEventListener("click", () => {
                             cajaForm.innerHTML= ``;
                         });
                             }else {
+                                //En caso de que los datos de usuario y contraseña no coincidan con los datos de admin
                                 Swal.fire({
                                     title: "Error en los datos de admin",
                                     icon: "error",

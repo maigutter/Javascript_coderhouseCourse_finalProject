@@ -1,3 +1,5 @@
+// Constructor clase Estudiante
+
 class Estudiante {
     constructor(nombre, apellido, email, contrasena){
         this.nombre = nombre;
@@ -8,13 +10,10 @@ class Estudiante {
     }
 }
 
+//Array estudiantes 
 let arrayEstudiantes = [];
-const arrayEstudiantesJSON = localStorage.getItem("arrayEstudiantes");
-arrayEstudiantesParse = JSON.parse(arrayEstudiantesJSON);
 
-arrayEstudiantes = arrayEstudiantesParse;
-
-
+// Form registro estudiante - ingreso nuevos estudiantes + pusheo al array 
 const formRegistroEstudiante = document.getElementById("formRegistroEstudiante");
 
 formRegistroEstudiante.addEventListener("submit", (e) => {
@@ -35,16 +34,21 @@ formRegistroEstudiante.addEventListener("submit", (e) => {
     arrayEstudiantes.push(estudiante);
     console.log(arrayEstudiantes);
 
-
-    const arrayEstudiantesJSON= JSON.stringify(arrayEstudiantes);
-    localStorage.setItem("arrayEstudiantes", arrayEstudiantesJSON);
-
     formRegistroEstudiante.reset();
+
+//Tomo el array estudiantes según recién actualizado con el pusheo del estudiante creado con el form y lo JSONeo, generando la nueva variable arrayEstudiantesJSON
+    let arrayEstudiantesJSON= JSON.stringify(arrayEstudiantes);
+//Guardo arrayEstudiantesJSOn en el Local Storage
+localStorage.setItem("arrayEstudiantesLocalStorage", arrayEstudiantesJSON);
+
 })
 
 
+//Retriveo el array Estudiantes que acabo de guardar en el local storage 
+let arrayEstudiantesDelLocalStorage = localStorage.getItem("arrayEstudiantesLocalStorage");
+let arrayEstudiantesLocalStorageParse = JSON.parse(arrayEstudiantesDelLocalStorage);
+//arrayEstudiantes = arrayEstudiantesParse;
 
-//Boton ingreso sesión
 const botonInicioSesion = document.getElementById("botonInicioSesion");
 botonInicioSesion.addEventListener("click", () => {
     Swal.fire({
@@ -62,10 +66,11 @@ botonInicioSesion.addEventListener("click", () => {
             const passwordIngresada = document.getElementById("passwordIngresada").value;
 
 
-            for (let i=0; i < arrayEstudiantes.lenght; i++) {
+            for (let i=0; i < arrayEstudiantes.length; i++) {
                 if (arrayEstudiantes[i].email === usuarioIngresado && arrayEstudiantes[i].contrasena === passwordIngresada){
-                    sessionStorage.setItem("nombreEstudiante", nombreIngresado);
-                    sessionStorage.setItem("docenteIngresade", docenteIngresade);
+                    sessionStorage.setItem("nombreEstudiante", arrayEstudiantes[i].nombre);
+                    sessionStorage.setItem("docenteIngresade", arrayEstudiantes[i].apellido);
+
                     window.location.href ="ejercicios.html"} else {
                         Swal.fire({
                             title: "Inicio de sesión fallido",
@@ -73,12 +78,6 @@ botonInicioSesion.addEventListener("click", () => {
                             icon: "error",
                             confirmButton: "Ok",})
                     }}
-
-            arrayEstudiantes.forEach(estudiante => {
-                
-                
-            });
-
         }
     } )
 })
