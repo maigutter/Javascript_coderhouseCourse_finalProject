@@ -39,6 +39,7 @@ const arrayEjercicios = [ejercicioUno, ejercicioDos, ejercicioTres];
 const usuarioAdmin = "Admin4";
 const passwordAdmin = "admin";
 
+//Botón (y función) Agregar Ejercicio
 let enviarFormAgregarEjercicioGlobal = null ;
 agregarEjercicio.addEventListener("click", () => {
     Swal.fire({
@@ -180,6 +181,83 @@ enviarFormEliminarEjercicioGlobal.addEventListener("click", () => {
     cajaFormEjercicios.innerHTML= ``;
 })};
 
+
+//Por último, hago algo similar pero para Editar Ejercicio
+let enviarFormEditarEjercicioGlobal = null ;
+editarEjercicio.addEventListener("click", () => {
+    Swal.fire({
+        //1. Pedido de ingreso de datos del admin.
+        title: "Ingresa tu usuario de admin",
+        html: `
+            <input type="text" id="usuarioIngresadoAdmin" class="swal2-input" placeholder="ingresa tu usuario">
+            <input type="text" id="passwordIngresadaAdmin" class="swal2-input" placeholder="ingresa tu contraseña">`,
+        confirmButtonText: "Enviar",
+        showCancelButton: true, 
+        cancelButtonText: "Cancelar",}).then(
+            (result)=>{
+                if(result.isConfirmed){ 
+                    // Si el usuario le dio Enviar (confirm), genero variables para almacenar la información ingresada
+                    let usuarioIngresadoAdmin = document.getElementById("usuarioIngresadoAdmin").value;
+                    let passwordIngresadaAdmin = document.getElementById("passwordIngresadaAdmin").value;
+                    
+                    // Si el usuario y contraseña ingresados son los datos del admin, 
+                    if (usuarioIngresadoAdmin === usuarioAdmin && passwordIngresadaAdmin === passwordAdmin){
+                        
+                        // Genero de manera dinámica el form para modificar un ejercicio:
+                        cajaFormEjercicios.innerHTML=`
+                        <section class="form">
+                            <div class="form__section"><input type="text" id="idEjercicio" class="swal2-input" placeholder="ingresa el ID del Ejercicio que querés modificar"></div>
+                            <div class="form__section"><input type="text" id="task" class="swal2-input" placeholder="ingresa el nuevo task del ejercicio"></div>
+                            <div class="form__section"><input type="text" id="respuestaCorrecta" class="swal2-input" placeholder="ingresa la nueva respuesta del ejercicio"></div>
+                            <div class="buttonsection">
+                                <div class="buttonsection" id="enviarFormEditarEjercicio"><input type="submit" value="Enviar" class="form__button" id="submit"></div>
+                                <div class="buttonsection" id="cerrarForm"><input type="submit" value="Cancelar" class="form__button" id="submit"></div> </div> </section> `;
+                        
+                        // Genero una constante para linkear con el botón que se acaba de generar (el de submit) y la linkeo con una variable global
+                        let enviarFormEditarEjercicio = document.getElementById("enviarFormEditarEjercicio");
+                        enviarFormEditarEjercicioGlobal = enviarFormEditarEjercicio;
+                        EventListenerBotonEditarEjercicio();
+
+                        };
+                        //asocio el botón cerrar form con un comportamiento que cierra el form
+                        const cerrarForm = document.getElementById("cerrarForm");
+                        cerrarForm.addEventListener("click", () => {
+                            cajaFormEjercicios.innerHTML= ``;
+                        });
+                        // Si los datos del admin no son correctos, disparo un mensaje de error con Swal Alert 
+                            }else {
+                                Swal.fire({
+                                    title: "Error en los datos de admin",
+                                    icon: "error",
+                                    confirmButtonText: "ok",
+                                })
+                            }}
+            )})
+
+
+//Asocio el botón con el comportamiento que genera un nuevo ejercicio y lo pushea a mi array Ejercicios
+function EventListenerBotonEditarEjercicio(){
+enviarFormEditarEjercicioGlobal.addEventListener("click", () => {
+    let idEjercicioBuscado = document.getElementById("idEjercicio").value;
+    let taskNuevo = document.getElementById("task").value;
+    let respuestaCorrectaNueva = document.getElementById("respuestaCorrecta").value.toUpperCase();
+    let ejercicioAEditar = arrayEjercicios.find(ejercicioAEditar => ejercicioAEditar.id === idEjercicioBuscado);
+    let indice = arrayEjercicios.indexOf(ejercicioAEditar);
+    let ejercicioEditado = new Ejercicios(idEjercicioBuscado, taskNuevo, respuestaCorrectaNueva);
+    arrayEjercicios.splice(indice, 1, ejercicioEditado);
+    console.log(arrayEjercicios);
+    Swal.fire({
+        title: "Ejercicio Editado",
+        icon: "success",
+        confirmButtonText: "ok",
+    })
+    cajaEjercicios.innerHTML = ``;
+    ejerciciosHtml();
+    cajaFormEjercicios.innerHTML= ``;
+})};
+
+
+//Función ejercicios HTML que lo que hace es, por un lado, generar de manera dinámica un div por cada ejercicio, y, por otro, conectar el botón de ese div con un pequeño programa que compara la respuesta ingresada por el usuario con la respuesta correcta almacenada en cada ejercicio-objeto en el array
 function ejerciciosHtml (){
     arrayEjercicios.forEach( ejercicio => {
         const div = document.createElement("div");
