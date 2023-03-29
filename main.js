@@ -28,7 +28,11 @@ formRegistroEstudiante.addEventListener("submit", (e) => {
     console.log(`y el apellido ingresado es ${apellido.value}`);
     console.log(`el email ingresado es ${email.value}`);
     console.log(`la contraseña ingresada es ${contrasena.value}`);
-    alert("Formulario enviado")
+    Swal.fire({
+        title: "Formulario Enviado! Tu usuario se generó exitosamente",
+        icon: "success",
+        confirmButtonText: "ok",
+    })
 
     const estudiante = new Estudiante (nombre.value, apellido.value, email.value, contrasena.value); 
     arrayEstudiantes.push(estudiante);
