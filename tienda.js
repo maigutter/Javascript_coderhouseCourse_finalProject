@@ -348,7 +348,7 @@ const calcularTotal = () => {
     arrayCarrito.forEach( cursoVenta => {
         sumaCompra += cursoVenta.precio * cursoVenta.cantidad;
     })
-    totalCompra.innerHTML = `<div class="cajatexto"><p class="container col-sm-8 textoalcentro"> EL Total de tu Compra es de $${totalCompra} </p></div>`;
+    totalCompra.innerHTML = `<div class="cajatexto"><p class="container col-sm-8 textoalcentro"> EL Total de tu Compra es de $${sumaCompra} </p></div>`;
 }
 
 mostrarCarrito();
