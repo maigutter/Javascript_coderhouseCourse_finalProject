@@ -283,10 +283,10 @@ const mostrarCarrito = () => {
         const div = document.createElement("div");
         div.className = "cursoCarrito";
         div.innerHTML = `
-                    <p class = "curso__nombre">Nombre: ${cursoVenta.nombre} </p>
-                    <img class = "curso__img" src = "${cursoVenta.img}">    
-                    <p class="curso__precio">Precio: $${cursoVenta.precio} </p>
-                    <p class="curso__precio"> Cantidad: ${cursoVenta.cantidad} </p>
+                    <p class = "cursoCarrito__nombre">Nombre: ${cursoVenta.nombre} </p>
+                    <img class = "cursoCarrito__img" src = "${cursoVenta.img}">    
+                    <p class="cursoCarrito__precio">Precio: $${cursoVenta.precio} </p>
+                    <p class="cursoCarrito__precio"> Cantidad: ${cursoVenta.cantidad} </p>
                     <button class="button" id="eliminarDelCarrito${cursoVenta.id}" >Eliminar del Carrito</button>
                     `
 
