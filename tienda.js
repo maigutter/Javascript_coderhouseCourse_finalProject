@@ -9,7 +9,7 @@ setInterval (() => {
         .then(response => response.json())
         .then(({blue}) => {
             let dolarBlueLocal = parseInt(blue) ;
-            //console.log(dolarBlueLocal, typeof(dolarBlueLocal));
+            console.log(dolarBlueLocal, typeof(dolarBlueLocal));
             precioDolarBlueGlobal = dolarBlueLocal;            
         })
         .catch (error => console.log(error))
