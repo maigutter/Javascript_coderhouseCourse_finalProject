@@ -49,9 +49,11 @@ let arrayEstudiantesDelLocalStorage = localStorage.getItem("arrayEstudiantesLoca
 let arrayEstudiantesLocalStorageParse = JSON.parse(arrayEstudiantesDelLocalStorage);
 //arrayEstudiantes = arrayEstudiantesParse;
 
+// Agrego un event listener al botón inicio de sesión
 const botonInicioSesion = document.getElementById("botonInicioSesion");
 botonInicioSesion.addEventListener("click", () => {
     Swal.fire({
+        //Genero un form x Sweet Alert que pida un usuario y contraseña
         title: "Inicio de Sesión",
         html: `
         <input type="text" id="usuarioIngresado" class="swal2-input" placeholder="ingresa tu mail">
@@ -62,16 +64,19 @@ botonInicioSesion.addEventListener("click", () => {
     }).then((result) =>{
         if(result.isConfirmed)
         {
+            //Si se ingresó info, almaceno el usuario y contraseña en variables locales
             const usuarioIngresado = document.getElementById("usuarioIngresado").value;
             const passwordIngresada = document.getElementById("passwordIngresada").value;
 
-
+            //genero un pequeño ciclo que recorra mi array estudiantes buscando una coincidencia en usuario Y contraseña
             for (let i=0; i < arrayEstudiantes.length; i++) {
                 if (arrayEstudiantes[i].email === usuarioIngresado && arrayEstudiantes[i].contrasena === passwordIngresada){
                     sessionStorage.setItem("nombreEstudiante", arrayEstudiantes[i].nombre);
                     sessionStorage.setItem("docenteIngresade", arrayEstudiantes[i].apellido);
-
-                    window.location.href ="ejercicios.html"} else {
+                    //en caso de que lo encuentre, redirecciono a la página de ejercicios
+                    window.location.href ="ejercicios.html"} 
+                    else {
+                        //Si no, disparo un sweet alert de error 
                         Swal.fire({
                             title: "Inicio de sesión fallido",
                             text: "Lo sentimos, tus datos no son correctos. Recargá la página y volvelo a intentar.",

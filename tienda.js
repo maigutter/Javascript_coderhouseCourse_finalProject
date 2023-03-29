@@ -1,3 +1,22 @@
+//API Criptoya y fetch
+const criptoYa = "https://criptoya.com/api/dolar";
+//declaro una variable global precioDolarBlue
+let precioDolarBlueGlobal 
+
+//fetcheo el valor de dolar blue desde la API, declaro una variable local con esa info y seteo el valor de la variable global al mismo que el de la local
+setInterval (() => {
+    fetch(criptoYa)
+        .then(response => response.json())
+        .then(({blue}) => {
+            let dolarBlueLocal = parseInt(blue) ;
+            //console.log(dolarBlueLocal, typeof(dolarBlueLocal));
+            precioDolarBlueGlobal = dolarBlueLocal;            
+        })
+        .catch (error => console.log(error))
+}, 3000)
+
+console.log(precioDolarBlueGlobal);
+
 // Constructor Cursos en Venta
 class CursoVenta {
     constructor(nombre, precio, img, descripcion, id) {
@@ -5,18 +24,21 @@ class CursoVenta {
         this.precio = precio; 
         this.img = img;
         this.descripcion = descripcion;
-        this.id = id
+        this.id = id;
+        this.cantidad = 1;
     }
 }
 
 //Creo tres cursos en venta por Default
 
-const cursoUno = new CursoVenta("Inglés Inicial", 5000, "./assets/logo4.jpeg", "Este es un curso inicial", "curso1");
-const cursoDos = new CursoVenta("Inglés Intermedio", 5000, "./assets/logo4.jpeg", "Este es un curso intermedio", "curso2");
-const cursoTres = new CursoVenta("Inglés Avanzado", 5000, "./assets/logo4.jpeg", "Este es un curso avanzado", "curso3");
+const cursoUno = new CursoVenta("Inglés Inicial", 20 * precioDolarBlueGlobal, "./assets/logo4.jpeg", "Este es un curso inicial", "curso1");
+const cursoDos = new CursoVenta("Inglés Intermedio", 20 * precioDolarBlueGlobal, "./assets/logo4.jpeg", "Este es un curso intermedio", "curso2");
+const cursoTres = new CursoVenta("Inglés Avanzado", 20 * precioDolarBlueGlobal, "./assets/logo4.jpeg", "Este es un curso avanzado", "curso3");
+
 
 // Creo el array Cursos Venta con los tres cursos default
 const arrayCursosVenta = [cursoUno, cursoDos, cursoTres];
+console.log(arrayCursosVenta);
 
 //Linkeo 3 botones
 const agregarCurso = document.getElementById("agregarCurso");
@@ -49,7 +71,7 @@ agregarCurso.addEventListener("click", () => {
                         cajaForm.innerHTML=`
                         <section class="form">
                             <div class="form__section"><input type="text" id="nombreCurso" class="swal2-input" placeholder="ingresa el nombre del curso"></div>
-                            <div class="form__section"><input type="number" id="precioCurso" class="swal2-input" placeholder="ingresa el precio del curso"></div>
+                            <div class="form__section"><input type="number" id="precioCurso" class="swal2-input" placeholder="ingresa el precio del curso en Dólares"></div>
                             <div class="form__section"><input type="text" id="descripcionCurso" class="swal2-input" placeholder="ingresa la descripción del curso"></div>
                             <div class="form__section"><input type="text" id="idCurso" class="swal2-input" placeholder="ingresa el ID del curso"></div>
                             <div class="buttonsection">
@@ -59,7 +81,7 @@ agregarCurso.addEventListener("click", () => {
                         //asocio el botón enviar form agregar curso con un event listener que tenga una pequeña función que agrega un nuevo curso con los datos ingresados y lo pushea al array
                         enviarFormAgregarCurso.addEventListener("click", () => {
                             let nombre = document.getElementById("nombreCurso").value;
-                            let precio = parseInt(document.getElementById("precioCurso").value);
+                            let precio = parseInt(document.getElementById("precioCurso").value) * precioDolarBlueGlobal;
                             let img = "./assets/logo4.jpeg";
                             let descripcion = document.getElementById("descripcionCurso").value;
                             let id = document.getElementById("idCurso").value;
@@ -161,9 +183,9 @@ editarCurso.addEventListener("click", () => {
                         cajaForm.innerHTML=`
                         <section class="form">
                             <div class="form__section"><input type="text" id="idCurso" class="swal2-input" placeholder="ingresa el ID del curso"></div>
-                            <div class="form__section"><input type="text" id="nombreCurso" class="swal2-input" placeholder="ingresa el nombre del curso"></div>
-                            <div class="form__section"><input type="number" id="precioCurso" class="swal2-input" placeholder="ingresa el precio del curso"></div>
-                            <div class="form__section"><input type="text" id="descripcionCurso" class="swal2-input" placeholder="ingresa la descripción del curso"></div>
+                            <div class="form__section"><input type="text" id="nombreCurso" class="swal2-input" placeholder="ingresa el nuevo nombre del curso"></div>
+                            <div class="form__section"><input type="number" id="precioCurso" class="swal2-input" placeholder="ingresa el nuevo precio del curso (en dólares)"></div>
+                            <div class="form__section"><input type="text" id="descripcionCurso" class="swal2-input" placeholder="ingresa la nueva descripción del curso"></div>
                             <div class="buttonsection">
                                 <div class="buttonsection" id="enviarFormEditarCurso"><input type="submit" value="Enviar" class="form__button" id="submit"></div>
                                 <div class="buttonsection" id="cerrarForm"><input type="submit" value="Cerrar" class="form__button" id="submit"></div> </div> </section> `;
@@ -174,7 +196,7 @@ editarCurso.addEventListener("click", () => {
                             let cursoVenta = arrayCursosVenta.find(cursoVenta => cursoVenta.id === idBuscado);
                             let indice = arrayCursosVenta.indexOf(cursoVenta);
                             let nombre = document.getElementById("nombreCurso").value;
-                            let precio = parseInt(document.getElementById("precioCurso").value);
+                            let precio = parseInt(document.getElementById("precioCurso").value) * precioDolarBlueGlobal;
                             let img = "./assets/logo4.jpeg";
                             let descripcion = document.getElementById("descripcionCurso").value;
                             let cursoModificado = new CursoVenta(nombre, precio, img, descripcion, idBuscado);
@@ -214,16 +236,92 @@ arrayCursosVenta.forEach( cursoVenta => {
                     <button class="button" id="agregarCarrito${cursoVenta.id}">Agregar al Carrito</button>
                     `;
     contenedorTienda.appendChild(div);
+
+    //Linkeo el botón agregarCarrito de cada curso con una constante por botón: 
+    const agregarCarrito = document.getElementById(`agregarCarrito${cursoVenta.id}`);
+    agregarCarrito.addEventListener("click", () => {
+        //lo linkeo con una función agregarAlCarrito que voy a declarar a continuación
+        agregarAlCarrito(cursoVenta.id);
+    })
 })}
 
 editarTienda();
 
-/*const arrayCarrito = [];
+let arrayCarrito = [];
+const divCarrito = document.getElementById("contenedorCarrito");
 
-let agregarCarrito = document.getElementById(`agregarCarrito${cursoVenta.id}`);
-agregarCarrito.addEventListener("click", ()=>{
-    let cursoVenta = 
-    arrayCarrito.push(cursoVenta);
+//Retriveo el carrito desde el localStorage en caso de que haya algo
+if(localStorage.getItem("arrayCarrito")) {
+    arrayCarrito = JSON.parse(localStorage.getItem("arrayCarrito"));
+}
+
+// Función agregar al carrito
+const agregarAlCarrito = (id) => {
+    const productoEnCarrito = arrayCarrito.find(cursoVenta => cursoVenta.id === id);
+    if(productoEnCarrito) {
+        productoEnCarrito.cantidad++;
+    }else {
+        const cursoVenta = arrayCursosVenta.find(cursoVenta => cursoVenta.id === id);
+        arrayCarrito.push(cursoVenta);
+    }
     console.log(arrayCarrito);
-})
-*/
+    calcularTotal();
+    mostrarCarrito();
+    //Guardo el carrito en el local storage: 
+    localStorage.setItem("arrayCarrito", JSON.stringify(arrayCarrito));
+}
+
+// Función que muestra el carrito 
+
+const mostrarCarrito = () => {
+    if(arrayCarrito.length === 0) {
+        divCarrito.innerHTML = `<div class="cajatexto"><p class="container col-sm-8 textoalcentro"> Tu carrito está vacío </p></div>`;
+    }
+    else {
+    divCarrito.innerHTML = "";
+    arrayCarrito.forEach(cursoVenta => {
+        const div = document.createElement("div");
+        div.className = "cursoCarrito";
+        div.innerHTML = `
+                    <p class = "curso__nombre">Nombre: ${cursoVenta.nombre} </p>
+                    <img class = "curso__img" src = "${cursoVenta.img}">    
+                    <p class="curso__precio">Precio: $${cursoVenta.precio} </p>
+                    <p class="curso__precio"> Cantidad: ${cursoVenta.cantidad} </p>
+                    <button class="button" id="eliminarDelCarrito${cursoVenta.id}" >Eliminar del Carrito</button>
+                    `
+
+        divCarrito.appendChild(div);
+
+        //Conecto el botón Eliminar con una constante 
+
+        const botonEliminarDelCarrito = document.getElementById(`eliminarDelCarrito${cursoVenta.id}`);
+        botonEliminarDelCarrito.addEventListener("click", () => {
+            eliminarDelCarrito(cursoVenta.id);
+        })
+    })
+    calcularTotal();}
+}
+
+// Función eliminar del Carrito
+const eliminarDelCarrito = (id) => {
+    const cursoVenta = arrayCarrito.find(cursoVenta => cursoVenta.id === id);
+    const indice = arrayCarrito.indexOf(cursoVenta);
+    arrayCarrito.splice(indice,1);
+    mostrarCarrito();
+
+    //Guardo el nuevo arrayCarrito en el localStorage
+    localStorage.setItem("arrayCarrito", JSON.stringify(arrayCarrito));
+}
+
+// Función que calcula el total
+const totalCompra = document.getElementById("totalCompra");
+
+const calcularTotal = () => {
+    let sumaCompra = 0; 
+    arrayCarrito.forEach( cursoVenta => {
+        sumaCompra += cursoVenta.precio * cursoVenta.cantidad;
+    })
+    totalCompra.innerHTML = `<div class="cajatexto"><p class="container col-sm-8 textoalcentro"> EL Total de tu Compra es de $${totalCompra} </p></div>`;
+}
+
+mostrarCarrito();
