@@ -10,10 +10,11 @@ setInterval (() => {
         .then(({blue}) => {
             let dolarBlueLocal = parseInt(blue) ;
             console.log(dolarBlueLocal, typeof(dolarBlueLocal));
-            precioDolarBlueGlobal = dolarBlueLocal;            
+            precioDolarBlueGlobal = dolarBlueLocal;
+            console.log(precioDolarBlueGlobal);
         })
         .catch (error => console.log(error))
-}, 3000)
+}, 300000000)
 
 console.log(precioDolarBlueGlobal);
 
@@ -29,16 +30,16 @@ class CursoVenta {
     }
 }
 
-//Creo tres cursos en venta por Default
+//Creo tres cursos en venta por Default con una función para que se creen después de que haya fetcheado el valor del precio dolar blue
 
 const cursoUno = new CursoVenta("Inglés Inicial", 20 * precioDolarBlueGlobal, "./assets/logo4.jpeg", "Este es un curso inicial", "curso1");
 const cursoDos = new CursoVenta("Inglés Intermedio", 20 * precioDolarBlueGlobal, "./assets/logo4.jpeg", "Este es un curso intermedio", "curso2");
 const cursoTres = new CursoVenta("Inglés Avanzado", 20 * precioDolarBlueGlobal, "./assets/logo4.jpeg", "Este es un curso avanzado", "curso3");
 
-
 // Creo el array Cursos Venta con los tres cursos default
 const arrayCursosVenta = [cursoUno, cursoDos, cursoTres];
 console.log(arrayCursosVenta);
+
 
 //Linkeo 3 botones
 const agregarCurso = document.getElementById("agregarCurso");
@@ -91,6 +92,12 @@ agregarCurso.addEventListener("click", () => {
                             // después de pushear el nuevo curso al array, limpio los divs con cursos y luego vuelvo a ejecutar la función que genera de manera dinámica divs con todos los cursos del nuevo array
                             contenedorTienda.innerHTML= ``;
                             editarTienda();
+                            Swal.fire({
+                                title: "Curso Agregado",
+                                icon: "success",
+                                confirmButtonText: "ok",
+                            })
+                            cajaForm.innerHTML=``;
                         });
                         //Genero un botón para cerrar el form de agregar curso 
                         const cerrarForm = document.getElementById("cerrarForm");
@@ -147,6 +154,12 @@ eliminarCurso.addEventListener("click", () => {
                             //después de eliminar el curso del array, limpio todos los divs con cursos y vuelvo a ejecutar la función que arma un div por curso presente en el array
                             contenedorTienda.innerHTML= ``;
                             editarTienda();
+                            Swal.fire({
+                                title: "Curso Eliminado",
+                                icon: "success",
+                                confirmButtonText: "ok",
+                            })
+                            cajaForm.innerHTML=``;
                         });
                         const cerrarForm = document.getElementById("cerrarForm");
                         cerrarForm.addEventListener("click", () => {
@@ -205,6 +218,12 @@ editarCurso.addEventListener("click", () => {
                             // después de editar el curso en el array, limpio todos los cursos y vuelvo a ejecutar la función que los muestra de manera dinámica
                             contenedorTienda.innerHTML= ``;
                             editarTienda();
+                            Swal.fire({
+                                title: "Curso Editado",
+                                icon: "success",
+                                confirmButtonText: "ok",
+                            })
+                            cajaForm.innerHTML=``;
                         });
                         // botón que cierra el form de editar curso
                         const cerrarForm = document.getElementById("cerrarForm");
