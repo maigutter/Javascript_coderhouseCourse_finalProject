@@ -327,14 +327,19 @@ const mostrarCarrito = () => {
         })
     })
     calcularTotal();}
-}
+} 
 
 // Función eliminar del Carrito
 const eliminarDelCarrito = (id) => {
     const cursoVenta = arrayCarrito.find(cursoVenta => cursoVenta.id === id);
     const indice = arrayCarrito.indexOf(cursoVenta);
+    if(arrayCarrito[indice].cantidad > 1){
+        arrayCarrito[indice].cantidad--;
+        mostrarCarrito();
+    }
+    else {
     arrayCarrito.splice(indice,1);
-    mostrarCarrito();
+    mostrarCarrito();}
 
     //Guardo el nuevo arrayCarrito en el localStorage
     localStorage.setItem("arrayCarrito", JSON.stringify(arrayCarrito));
