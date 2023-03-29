@@ -11,12 +11,14 @@ setInterval (() => {
             let dolarBlueLocal = parseInt(blue) ;
             console.log(dolarBlueLocal, typeof(dolarBlueLocal));
             precioDolarBlueGlobal = dolarBlueLocal;
-            console.log(precioDolarBlueGlobal);
+            console.log("el valor de precioDolarBlueGlobal es " + precioDolarBlueGlobal + " y esta data es un " + typeof(precioDolarBlueGlobal));
         })
         .catch (error => console.log(error))
-}, 300000000)
+}, 3000)
 
-console.log(precioDolarBlueGlobal);
+setTimeout(()=>{
+    console.log("el valor Global de precioDolarBlueGlobal es " + precioDolarBlueGlobal + " y esta data es un " + typeof(precioDolarBlueGlobal))
+}, 3500);
 
 // Constructor Cursos en Venta
 class CursoVenta {
@@ -30,15 +32,22 @@ class CursoVenta {
     }
 }
 
-//Creo tres cursos en venta por Default con una función para que se creen después de que haya fetcheado el valor del precio dolar blue
-
-const cursoUno = new CursoVenta("Inglés Inicial", 20 * precioDolarBlueGlobal, "./assets/logo4.jpeg", "Este es un curso inicial", "curso1");
-const cursoDos = new CursoVenta("Inglés Intermedio", 20 * precioDolarBlueGlobal, "./assets/logo4.jpeg", "Este es un curso intermedio", "curso2");
-const cursoTres = new CursoVenta("Inglés Avanzado", 20 * precioDolarBlueGlobal, "./assets/logo4.jpeg", "Este es un curso avanzado", "curso3");
-
-// Creo el array Cursos Venta con los tres cursos default
-const arrayCursosVenta = [cursoUno, cursoDos, cursoTres];
+//Creo un array Cusos Venta 
+const arrayCursosVenta = [];
 console.log(arrayCursosVenta);
+
+//De manera asincrónica, con un tiempo de 3500milisegundos para asegurarme de que no corra antes de que la función fetch me fetchee y setee precioDolarBlueGlobal, creo 3 cursos venta default y los pusheo a mi array CursosVenta
+setTimeout(()=> {
+    const cursoUno = new CursoVenta("Inglés Inicial", precioDolarBlueGlobal*20, "./assets/logo4.jpeg", "Este es un curso inicial", "curso1");
+    const cursoDos = new CursoVenta("Inglés Intermedio", precioDolarBlueGlobal*20, "./assets/logo4.jpeg", "Este es un curso intermedio", "curso2");
+    const cursoTres = new CursoVenta("Inglés Avanzado", precioDolarBlueGlobal*20, "./assets/logo4.jpeg", "Este es un curso avanzado", "curso3");
+
+    // Pusheo los tres cursos que acabo de crear por default al ArrayCursosVenta
+    arrayCursosVenta.push(cursoUno, cursoDos, cursoTres);
+    console.log(arrayCursosVenta);
+    editarTienda();
+}, 3500)
+
 
 
 //Linkeo 3 botones
@@ -264,7 +273,6 @@ arrayCursosVenta.forEach( cursoVenta => {
     })
 })}
 
-editarTienda();
 
 let arrayCarrito = [];
 const divCarrito = document.getElementById("contenedorCarrito");
