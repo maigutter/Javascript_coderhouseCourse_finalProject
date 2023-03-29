@@ -336,10 +336,12 @@ const eliminarDelCarrito = (id) => {
     if(arrayCarrito[indice].cantidad > 1){
         arrayCarrito[indice].cantidad--;
         mostrarCarrito();
+        calcularTotal();
     }
     else {
     arrayCarrito.splice(indice,1);
-    mostrarCarrito();}
+    mostrarCarrito();
+    calcularTotal();}
 
     //Guardo el nuevo arrayCarrito en el localStorage
     localStorage.setItem("arrayCarrito", JSON.stringify(arrayCarrito));
@@ -349,11 +351,15 @@ const eliminarDelCarrito = (id) => {
 const totalCompra = document.getElementById("totalCompra");
 
 const calcularTotal = () => {
-    let sumaCompra = 0; 
+    let sumaCompra = 0;     
     arrayCarrito.forEach( cursoVenta => {
         sumaCompra += cursoVenta.precio * cursoVenta.cantidad;
     })
+    if (sumaCompra === 0) {
+        totalCompra.innerHTML = `<div class="cajatexto"><p class="container col-sm-8 textoalcentro"> EL Total de tu Compra es de $0 </p></div>`
+    } else {
     totalCompra.innerHTML = `<div class="cajatexto"><p class="container col-sm-8 textoalcentro"> EL Total de tu Compra es de $${sumaCompra} </p></div>`;
+}
 }
 
 mostrarCarrito();
